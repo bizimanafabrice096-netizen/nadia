@@ -1,0 +1,2631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="OpportunityHub helps students discover scholarships, internships, jobs and free learning opportunities."
+  >
+
+  <title>Bizi HUB</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='white'/%3E%3Cpath d='M50 18 C40 11 27 15 23 26 C12 29 7 42 13 52 C8 63 15 76 27 79 C33 90 47 93 57 86 C68 90 80 82 81 70 C91 63 91 48 82 40 C82 28 70 20 59 23 C56 16 53 15 50 18Z' fill='none' stroke='%2310a37f' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M50 18 L50 50 L57 86 M23 26 L50 50 L82 40 M13 52 L50 50 L81 70 M27 79 L50 50' fill='none' stroke='%2310a37f' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <style>
+    /* =========================================
+       GLOBAL STYLES
+    ========================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #7c3aed;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e5e7eb;
+      --success: #16a34a;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+    }
+
+    body.dark {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+      --shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s;
+      line-height: 1.5;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* =========================================
+       NAVBAR
+    ========================================= */
+
+    nav {
+      height: 72px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 6%;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .brand-icon .logo-line {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .theme-btn {
+      background: var(--bg);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    /* Mobile menu button */
+
+    .menu-btn {
+      display: none;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 22px;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero {
+      min-height: 520px;
+
+      padding: 80px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 50px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.96),
+          rgba(124, 58, 237, 0.95)
+        );
+
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      line-height: 1.08;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      opacity: 0.92;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn {
+      background: white;
+      color: var(--primary);
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-weight: bold;
+    }
+
+    .hero-card {
+      width: 320px;
+
+      background: rgba(255, 255, 255, 0.13);
+
+      padding: 30px;
+
+      border-radius: 20px;
+
+      backdrop-filter: blur(12px);
+
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 13px 0;
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* =========================================
+       SECTIONS
+    ========================================= */
+
+    section {
+      padding: 75px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    /* =========================================
+       CATEGORIES
+    ========================================= */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .category {
+      background: var(--card);
+      border: 1px solid var(--border);
+
+      padding: 30px 20px;
+
+      border-radius: 16px;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+    }
+
+    .category:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+
+    .category-icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .category h3 {
+      margin-bottom: 8px;
+    }
+
+    .category p {
+      color: var(--muted);
+    }
+
+    /* =========================================
+       SEARCH
+    ========================================= */
+
+    .search-box {
+      max-width: 900px;
+
+      margin: 0 auto 40px;
+
+      display: flex;
+
+      gap: 10px;
+    }
+
+    .search-box input,
+    .search-box select {
+      padding: 15px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 10px;
+
+      background: var(--card);
+
+      color: var(--text);
+
+      outline: none;
+    }
+
+    .search-box input {
+      flex: 1;
+    }
+
+    .search-box select {
+      width: 190px;
+    }
+
+    .search-box input:focus,
+    .search-box select:focus {
+      border-color: var(--primary);
+    }
+
+    /* =========================================
+       OPPORTUNITIES
+    ========================================= */
+
+    .opportunities {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 22px;
+    }
+
+    .opportunity {
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 17px;
+
+      padding: 25px;
+
+      transition: 0.3s;
+    }
+
+    .opportunity:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .tag {
+      display: inline-block;
+
+      background: #dbeafe;
+
+      color: #1d4ed8;
+
+      padding: 6px 11px;
+
+      border-radius: 20px;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      margin-bottom: 15px;
+    }
+
+    body.dark .tag {
+      background: #1e3a8a;
+      color: #bfdbfe;
+    }
+
+    .opportunity h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .opportunity p {
+      color: var(--muted);
+
+      line-height: 1.6;
+
+      margin-bottom: 17px;
+    }
+
+    .details {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      margin-bottom: 20px;
+    }
+
+    .card-buttons {
+      display: flex;
+
+      gap: 10px;
+    }
+
+    .apply-btn {
+      flex: 1;
+
+      background: var(--primary);
+
+      color: white;
+
+      padding: 11px;
+
+      border-radius: 8px;
+
+      font-weight: bold;
+    }
+
+    .apply-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .save-btn {
+      background: var(--bg);
+
+      color: var(--text);
+
+      padding: 11px 15px;
+
+      border-radius: 8px;
+
+      border: 1px solid var(--border);
+
+      font-size: 18px;
+    }
+
+    .save-btn.saved {
+      color: #f59e0b;
+    }
+
+    /* =========================================
+       ELIGIBILITY CHECKER
+    ========================================= */
+
+    .checker {
+      max-width: 700px;
+
+      margin: auto;
+
+      background: var(--card);
+
+      padding: 35px;
+
+      border-radius: 18px;
+
+      border: 1px solid var(--border);
+
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+
+      padding: 13px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      outline: none;
+    }
+
+    .check-btn {
+      width: 100%;
+
+      background: var(--primary);
+
+      color: white;
+
+      padding: 14px;
+
+      border-radius: 9px;
+
+      font-weight: bold;
+
+      font-size: 16px;
+    }
+
+    #result {
+      margin-top: 20px;
+
+      padding: 15px;
+
+      border-radius: 10px;
+
+      display: none;
+
+      line-height: 1.6;
+    }
+
+    .success {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .warning {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    /* =========================================
+       DASHBOARD
+    ========================================= */
+
+    .dashboard {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .dashboard-card {
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      padding: 25px;
+
+      border-radius: 15px;
+    }
+
+    .dashboard-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .big-number {
+      font-size: 35px;
+
+      color: var(--primary);
+
+      font-weight: bold;
+
+      margin-bottom: 5px;
+    }
+
+    .dashboard-card p {
+      color: var(--muted);
+    }
+
+    /* =========================================
+       DEVELOPER SECTION
+    ========================================= */
+
+    .developer-section {
+      background: var(--bg);
+    }
+
+    .developer-card {
+      max-width: 1050px;
+
+      margin: auto;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 25px;
+
+      padding: 45px;
+
+      display: flex;
+
+      gap: 40px;
+
+      align-items: flex-start;
+
+      box-shadow: var(--shadow);
+    }
+
+    .developer-avatar {
+      min-width: 135px;
+
+      height: 135px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 42px;
+
+      font-weight: bold;
+
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    .developer-info {
+      flex: 1;
+    }
+
+    .developer-info h2 {
+      font-size: 32px;
+
+      margin-bottom: 5px;
+    }
+
+    .developer-role {
+      color: var(--primary) !important;
+
+      font-weight: bold;
+
+      margin-bottom: 18px;
+    }
+
+    .developer-description {
+      color: var(--muted);
+
+      line-height: 1.8;
+
+      margin-bottom: 20px;
+    }
+
+    .contact-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 14px;
+
+      margin-top: 25px;
+    }
+
+    .contact-grid a {
+      text-decoration: none;
+
+      color: var(--text);
+
+      background: var(--bg);
+
+      border: 1px solid var(--border);
+
+      padding: 15px;
+
+      border-radius: 10px;
+
+      transition: 0.3s;
+    }
+
+    .contact-grid a:hover {
+      border-color: var(--primary);
+
+      transform: translateY(-2px);
+    }
+
+    .contact-grid span {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .portfolio-btn {
+      display: inline-block;
+
+      margin-top: 25px;
+
+      padding: 13px 22px;
+
+      background: var(--primary);
+
+      color: white;
+
+      text-decoration: none;
+
+      border-radius: 9px;
+
+      font-weight: bold;
+
+      transition: 0.3s;
+    }
+
+    .portfolio-btn:hover {
+      background: var(--secondary);
+
+      transform: translateY(-2px);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer {
+      background: #0f172a;
+
+      color: white;
+
+      padding: 50px 7%;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 50px;
+    }
+
+    footer h2 {
+      margin-bottom: 10px;
+    }
+
+    footer h2 span {
+      color: #8b5cf6;
+    }
+
+    footer h3 {
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      color: #94a3b8;
+
+      margin-top: 8px;
+
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 15px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+
+      color: #cbd5e1;
+
+      padding: 7px 10px;
+
+      border-radius: 7px;
+
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-links a:hover {
+      color: white;
+
+      background: var(--primary);
+    }
+
+    .copyright {
+      max-width: 1100px;
+
+      margin: 35px auto 0;
+
+      padding-top: 25px;
+
+      border-top: 1px solid #334155;
+
+      text-align: center;
+    }
+
+    /* =========================================
+       TOAST
+    ========================================= */
+
+    .toast {
+      position: fixed;
+
+      right: 25px;
+
+      bottom: 25px;
+
+      background: #111827;
+
+      color: white;
+
+      padding: 15px 20px;
+
+      border-radius: 10px;
+
+      transform: translateY(100px);
+
+      opacity: 0;
+
+      transition: 0.3s;
+
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+
+      opacity: 1;
+    }
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 1000px) {
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .opportunities {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 750px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 72px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: var(--card);
+
+        flex-direction: column;
+
+        padding: 20px 5%;
+
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 65px 5%;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-card {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      section {
+        padding: 55px 5%;
+      }
+
+      .developer-card {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 30px;
+      }
+
+      .developer-avatar {
+        margin: auto;
+      }
+
+    }
+
+    @media (max-width: 550px) {
+
+      .categories,
+      .opportunities {
+        grid-template-columns: 1fr;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box select {
+        width: 100%;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+
+        text-align: left;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+
+      .section-title h2 {
+        font-size: 29px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================================
+       NAVIGATION
+  ========================================= -->
+
+  <nav>
+
+    <a class="brand-logo" href="#home" aria-label="OpportunityHub home">
+      <svg class="brand-icon" viewBox="0 0 100 100" aria-hidden="true">
+        <path
+          class="logo-line"
+          d="M50 18
+             C40 11 27 15 23 26
+             C12 29 7 42 13 52
+             C8 63 15 76 27 79
+             C33 90 47 93 57 86
+             C68 90 80 82 81 70
+             C91 63 91 48 82 40
+             C82 28 70 20 59 23
+             C56 16 53 15 50 18Z"/>
+        <path class="logo-line" d="M50 18 L50 50 L57 86"/>
+        <path class="logo-line" d="M23 26 L50 50 L82 40"/>
+        <path class="logo-line" d="M13 52 L50 50 L81 70"/>
+        <path class="logo-line" d="M27 79 L50 50"/>
+      </svg>
+
+      <div class="logo">
+        Opportunity<span>Hub</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+
+      <li>
+        <a href="#home">Home</a>
+      </li>
+
+      <li>
+        <a href="#opportunities">Opportunities</a>
+      </li>
+
+      <li>
+        <a href="#checker">Eligibility</a>
+      </li>
+
+      <li>
+        <a href="#dashboard">Dashboard</a>
+      </li>
+
+      <li>
+        <a href="#contact">Contact</a>
+      </li>
+
+    </ul>
+
+    <div class="nav-actions">
+
+      <button
+        class="theme-btn"
+        onclick="toggleTheme()"
+        id="themeButton"
+        aria-label="Toggle dark mode">
+        🌙
+      </button>
+
+      <button
+        class="menu-btn"
+        onclick="toggleMenu()"
+        aria-label="Open menu">
+        ☰
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+
+  <header class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>
+        Find Opportunities.
+        Build Your Future.
+      </h1>
+
+      <p>
+        OpportunityHub helps students discover
+        scholarships, internships, jobs and free
+        learning opportunities in one simple platform.
+      </p>
+
+      <div class="hero-buttons">
+
+        <button
+          class="primary-btn"
+          onclick="scrollToSection('opportunities')">
+          Explore Opportunities
+        </button>
+
+        <button
+          class="secondary-btn"
+          onclick="scrollToSection('checker')">
+          Check Eligibility
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+      <h3>📊 Platform Overview</h3>
+
+      <div class="stat">
+        <span>Opportunities</span>
+        <strong id="heroTotal">12+</strong>
+      </div>
+
+      <div class="stat">
+        <span>Scholarships</span>
+        <strong id="heroScholarships">3</strong>
+      </div>
+
+      <div class="stat">
+        <span>Internships</span>
+        <strong id="heroInternships">4</strong>
+      </div>
+
+      <div class="stat">
+        <span>Courses</span>
+        <strong id="heroCourses">3</strong>
+      </div>
+
+      <div class="stat">
+        <span>Jobs</span>
+        <strong id="heroJobs">2</strong>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       CATEGORIES
+  ========================================= -->
+
+  <section>
+
+    <div class="section-title">
+
+      <h2>Explore Categories</h2>
+
+      <p>
+        Find opportunities that match your goals.
+      </p>
+
+    </div>
+
+
+    <div class="categories">
+
+      <div
+        class="category"
+        onclick="filterCategory('Scholarship')">
+
+        <div class="category-icon">
+          🎓
+        </div>
+
+        <h3>Scholarships</h3>
+
+        <p>
+          Financial support for your education.
+        </p>
+
+      </div>
+
+
+      <div
+        class="category"
+        onclick="filterCategory('Internship')">
+
+        <div class="category-icon">
+          💼
+        </div>
+
+        <h3>Internships</h3>
+
+        <p>
+          Gain practical work experience.
+        </p>
+
+      </div>
+
+
+      <div
+        class="category"
+        onclick="filterCategory('Course')">
+
+        <div class="category-icon">
+          📚
+        </div>
+
+        <h3>Courses</h3>
+
+        <p>
+          Learn valuable new skills.
+        </p>
+
+      </div>
+
+
+      <div
+        class="category"
+        onclick="filterCategory('Job')">
+
+        <div class="category-icon">
+          🚀
+        </div>
+
+        <h3>Jobs</h3>
+
+        <p>
+          Start building your career.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       OPPORTUNITIES
+  ========================================= -->
+
+  <section id="opportunities">
+
+    <div class="section-title">
+
+      <h2>Latest Opportunities</h2>
+
+      <p>
+        Search and discover opportunities.
+      </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search scholarships, jobs, courses..."
+        onkeyup="filterOpportunities()"
+      >
+
+      <select
+        id="categoryFilter"
+        onchange="filterOpportunities()">
+
+        <option value="All">
+          All Categories
+        </option>
+
+        <option value="Scholarship">
+          Scholarship
+        </option>
+
+        <option value="Internship">
+          Internship
+        </option>
+
+        <option value="Course">
+          Course
+        </option>
+
+        <option value="Job">
+          Job
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div
+      class="opportunities"
+      id="opportunityList">
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       ELIGIBILITY CHECKER
+  ========================================= -->
+
+  <section id="checker">
+
+    <div class="section-title">
+
+      <h2>Eligibility Checker</h2>
+
+      <p>
+        Check basic eligibility before exploring an opportunity.
+      </p>
+
+    </div>
+
+
+    <div class="checker">
+
+      <div class="form-group">
+
+        <label for="age">
+          Your Age
+        </label>
+
+        <input
+          type="number"
+          id="age"
+          min="1"
+          max="100"
+          placeholder="Enter your age">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="education">
+          Education Level
+        </label>
+
+        <select id="education">
+
+          <option value="">
+            Select education level
+          </option>
+
+          <option value="secondary">
+            Secondary School
+          </option>
+
+          <option value="undergraduate">
+            Undergraduate
+          </option>
+
+          <option value="graduate">
+            Graduate
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="opportunityType">
+          Opportunity Type
+        </label>
+
+        <select id="opportunityType">
+
+          <option value="">
+            Select opportunity
+          </option>
+
+          <option value="scholarship">
+            Scholarship
+          </option>
+
+          <option value="internship">
+            Internship
+          </option>
+
+          <option value="course">
+            Course
+          </option>
+
+          <option value="job">
+            Job
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        class="check-btn"
+        onclick="checkEligibility()">
+
+        Check Eligibility
+
+      </button>
+
+
+      <div id="result"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       DASHBOARD
+  ========================================= -->
+
+  <section id="dashboard">
+
+    <div class="section-title">
+
+      <h2>My Dashboard</h2>
+
+      <p>
+        Track your OpportunityHub activity.
+      </p>
+
+    </div>
+
+
+    <div class="dashboard">
+
+      <div class="dashboard-card">
+
+        <h3>
+          ⭐ Saved Opportunities
+        </h3>
+
+        <div
+          class="big-number"
+          id="savedCount">
+          0
+        </div>
+
+        <p>
+          Opportunities saved for later.
+        </p>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <h3>
+          🔎 Opportunities Viewed
+        </h3>
+
+        <div
+          class="big-number"
+          id="viewCount">
+          0
+        </div>
+
+        <p>
+          Opportunities you have explored.
+        </p>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <h3>
+          🎯 Profile Progress
+        </h3>
+
+        <div class="big-number">
+          75%
+        </div>
+
+        <p>
+          Complete your profile to improve recommendations.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       DEVELOPER / CONTACT
+  ========================================= -->
+
+  <section
+    id="contact"
+    class="developer-section">
+
+    <div class="section-title">
+
+      <h2>
+        Meet the Developer
+      </h2>
+
+      <p>
+        Designed and developed with passion for solving real-world problems.
+      </p>
+
+    </div>
+
+
+    <div class="developer-card">
+
+      <div class="developer-avatar">
+        BF
+      </div>
+
+
+      <div class="developer-info">
+
+        <h2>
+          Bizimana Fabrice
+        </h2>
+
+        <p class="developer-role">
+          Full-Stack Developer • Technology Enthusiast
+        </p>
+
+
+        <p class="developer-description">
+
+          OpportunityHub was designed and developed by
+          <strong>Bizimana Fabrice</strong> to help students
+          discover educational, career and professional opportunities.
+
+        </p>
+
+
+        <div class="contact-grid">
+
+
+          <!-- EMAIL -->
+
+          <a
+            href="mailto:bizimanfabrice096@gmail.com">
+
+            📧 Email
+
+            <br>
+
+            <span>
+              bizimanfabrice096@gmail.com
+            </span>
+
+          </a>
+
+
+          <!-- FACEBOOK -->
+
+          <a
+            href="https://www.facebook.com/search/top?q=Bizimana%20Fabrice"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            📘 Facebook
+
+            <br>
+
+            <span>
+              Bizimana Fabrice
+            </span>
+
+          </a>
+
+
+          <!-- INSTAGRAM -->
+
+          <a
+            href="https://www.instagram.com/bizimana_fabrice/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            📸 Instagram
+
+            <br>
+
+            <span>
+              @bizimana_fabrice
+            </span>
+
+          </a>
+
+
+          <!-- LINKEDIN -->
+
+          <a
+            href="https://www.linkedin.com/search/results/all/?keywords=Bizimana%20IT"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            💼 LinkedIn
+
+            <br>
+
+            <span>
+              Bizimana IT
+            </span>
+
+          </a>
+
+
+          <!-- TELEGRAM -->
+
+          <a
+            href="https://t.me/0728715321"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            ✈️ Telegram
+
+            <br>
+
+            <span>
+              0728715321
+            </span>
+
+          </a>
+
+
+          <!-- WHATSAPP -->
+
+          <a
+            href="https://wa.me/250728715321"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            💬 WhatsApp
+
+            <br>
+
+            <span>
+              0728715321
+            </span>
+
+          </a>
+
+
+          <!-- PHONE 1 -->
+
+          <a
+            href="tel:+250728715321">
+
+            📞 Contact
+
+            <br>
+
+            <span>
+              0728715321
+            </span>
+
+          </a>
+
+
+          <!-- PHONE 2 -->
+
+          <a
+            href="tel:+250794513444">
+
+            📱 Alternative
+
+            <br>
+
+            <span>
+              0794513444
+            </span>
+
+          </a>
+
+
+        </div>
+
+
+        <!-- PORTFOLIO -->
+
+        <a
+          href="https://ratifah.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="portfolio-btn">
+
+          🌐 Visit My Portfolio
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================= -->
+
+  <footer>
+
+    <div class="footer-content">
+
+
+      <div>
+
+        <h2>
+          Opportunity<span>Hub</span>
+        </h2>
+
+        <p>
+          Helping students discover opportunities
+          and build better futures.
+        </p>
+
+        <div class="footer-links">
+
+          <a href="#home">
+            Home
+          </a>
+
+          <a href="#opportunities">
+            Opportunities
+          </a>
+
+          <a href="#checker">
+            Eligibility
+          </a>
+
+          <a href="#dashboard">
+            Dashboard
+          </a>
+
+          <a href="#contact">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Developer
+        </h3>
+
+        <p>
+          Made by
+          <strong>
+            Bizimana Fabrice
+          </strong>
+        </p>
+
+        <p>
+          Full-Stack Developer
+        </p>
+
+        <p>
+          Kigali, Rwanda
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+      <p>
+        © 2026 OpportunityHub.
+        All rights reserved.
+      </p>
+
+      <p>
+        Developed by
+        <strong>
+          Bizimana Fabrice
+        </strong>
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================
+       TOAST
+  ========================================= -->
+
+  <div
+    class="toast"
+    id="toast">
+  </div>
+
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================= -->
+
+  <script>
+
+    /* =========================================
+       OPPORTUNITY DATA
+    ========================================= */
+
+    const opportunities = [
+
+      {
+        id: 1,
+        title: "Global Student Scholarship",
+        category: "Scholarship",
+        organization: "Education Foundation",
+        location: "Online",
+        deadline: "30 November 2026",
+        description:
+          "Financial support for students pursuing higher education."
+      },
+
+      {
+        id: 2,
+        title: "Software Development Internship",
+        category: "Internship",
+        organization: "Tech Solutions",
+        location: "Kigali",
+        deadline: "15 December 2026",
+        description:
+          "Gain practical experience in web and software development."
+      },
+
+      {
+        id: 3,
+        title: "Free Web Development Course",
+        category: "Course",
+        organization: "Learning Academy",
+        location: "Online",
+        deadline: "Open",
+        description:
+          "Learn HTML, CSS and JavaScript from beginner to advanced level."
+      },
+
+      {
+        id: 4,
+        title: "Junior Web Developer",
+        category: "Job",
+        organization: "Digital Agency",
+        location: "Kigali",
+        deadline: "20 December 2026",
+        description:
+          "Entry-level opportunity for students interested in web development."
+      },
+
+      {
+        id: 5,
+        title: "STEM Excellence Scholarship",
+        category: "Scholarship",
+        organization: "Future Scientists",
+        location: "Africa",
+        deadline: "10 January 2027",
+        description:
+          "Scholarship opportunity for students studying science and technology."
+      },
+
+      {
+        id: 6,
+        title: "Digital Marketing Internship",
+        category: "Internship",
+        organization: "Creative Media",
+        location: "Hybrid",
+        deadline: "5 December 2026",
+        description:
+          "Develop professional skills in digital marketing and social media."
+      },
+
+      {
+        id: 7,
+        title: "Python Programming Course",
+        category: "Course",
+        organization: "Code Academy",
+        location: "Online",
+        deadline: "Open",
+        description:
+          "Learn Python programming through practical projects."
+      },
+
+      {
+        id: 8,
+        title: "Graphic Design Internship",
+        category: "Internship",
+        organization: "Creative Studio",
+        location: "Kigali",
+        deadline: "18 December 2026",
+        description:
+          "Build a professional design portfolio while working with a creative team."
+      },
+
+      {
+        id: 9,
+        title: "Data Analyst Graduate Program",
+        category: "Job",
+        organization: "Data Africa",
+        location: "Remote",
+        deadline: "28 December 2026",
+        description:
+          "Entry-level data analytics opportunity for motivated graduates."
+      },
+
+      {
+        id: 10,
+        title: "Cybersecurity Fundamentals",
+        category: "Course",
+        organization: "Open Learning",
+        location: "Online",
+        deadline: "Open",
+        description:
+          "Introduction to cybersecurity concepts and digital safety."
+      },
+
+      {
+        id: 11,
+        title: "Women in Technology Scholarship",
+        category: "Scholarship",
+        organization: "Tech Future",
+        location: "Africa",
+        deadline: "12 January 2027",
+        description:
+          "Educational funding and mentorship for women pursuing technology."
+      },
+
+      {
+        id: 12,
+        title: "Business Administration Internship",
+        category: "Internship",
+        organization: "Business Group",
+        location: "Kigali",
+        deadline: "22 December 2026",
+        description:
+          "Practical experience in administration, business and project management."
+      }
+
+    ];
+
+
+    /* =========================================
+       LOCAL STORAGE
+    ========================================= */
+
+    let saved =
+      JSON.parse(
+        localStorage.getItem("savedOpportunities")
+      ) || [];
+
+
+    let viewed =
+      Number(
+        localStorage.getItem("viewedOpportunities")
+      ) || 0;
+
+
+    /* =========================================
+       DISPLAY OPPORTUNITIES
+    ========================================= */
+
+    function displayOpportunities(data) {
+
+      const container =
+        document.getElementById(
+          "opportunityList"
+        );
+
+      container.innerHTML = "";
+
+
+      if (data.length === 0) {
+
+        container.innerHTML = `
+
+          <div style="
+            grid-column:1/-1;
+            text-align:center;
+            padding:50px;
+            color:var(--muted);
+          ">
+
+            <h3>
+              No opportunities found.
+            </h3>
+
+            <p>
+              Try another search or category.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+      }
+
+
+      data.forEach(item => {
+
+        const isSaved =
+          saved.includes(item.id);
+
+
+        const card =
+          document.createElement("div");
+
+
+        card.className =
+          "opportunity";
+
+
+        card.innerHTML = `
+
+          <span class="tag">
+            ${item.category}
+          </span>
+
+          <h3>
+            ${item.title}
+          </h3>
+
+          <p>
+            ${item.description}
+          </p>
+
+          <div class="details">
+
+            <span>
+              🏢 ${item.organization}
+            </span>
+
+            <span>
+              📍 ${item.location}
+            </span>
+
+            <span>
+              📅 Deadline: ${item.deadline}
+            </span>
+
+          </div>
+
+          <div class="card-buttons">
+
+            <button
+              class="apply-btn"
+              onclick="viewOpportunity(${item.id})">
+
+              View Details
+
+            </button>
+
+            <button
+              class="save-btn ${isSaved ? "saved" : ""}"
+              onclick="saveOpportunity(${item.id})">
+
+              ${isSaved ? "★" : "☆"}
+
+            </button>
+
+          </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+      });
+
+    }
+
+
+    /* =========================================
+       SEARCH AND FILTER
+    ========================================= */
+
+    function filterOpportunities() {
+
+      const search =
+        document
+          .getElementById("searchInput")
+          .value
+          .toLowerCase()
+          .trim();
+
+
+      const category =
+        document
+          .getElementById("categoryFilter")
+          .value;
+
+
+      const filtered =
+        opportunities.filter(item => {
+
+          const matchesSearch =
+            item.title
+              .toLowerCase()
+              .includes(search) ||
+
+            item.description
+              .toLowerCase()
+              .includes(search) ||
+
+            item.organization
+              .toLowerCase()
+              .includes(search) ||
+
+            item.location
+              .toLowerCase()
+              .includes(search);
+
+
+          const matchesCategory =
+            category === "All" ||
+            item.category === category;
+
+
+          return (
+            matchesSearch &&
+            matchesCategory
+          );
+
+        });
+
+
+      displayOpportunities(filtered);
+
+    }
+
+
+    /* =========================================
+       CATEGORY FILTER
+    ========================================= */
+
+    function filterCategory(category) {
+
+      document
+        .getElementById("categoryFilter")
+        .value = category;
+
+
+      scrollToSection("opportunities");
+
+
+      filterOpportunities();
+
+    }
+
+
+    /* =========================================
+       SAVE OPPORTUNITY
+    ========================================= */
+
+    function saveOpportunity(id) {
+
+      if (saved.includes(id)) {
+
+        saved =
+          saved.filter(
+            item => item !== id
+          );
+
+        showToast(
+          "Removed from saved opportunities."
+        );
+
+      } else {
+
+        saved.push(id);
+
+        showToast(
+          "Opportunity saved ⭐"
+        );
+
+      }
+
+
+      localStorage.setItem(
+        "savedOpportunities",
+        JSON.stringify(saved)
+      );
+
+
+      updateDashboard();
+
+      filterOpportunities();
+
+    }
+
+
+    /* =========================================
+       VIEW OPPORTUNITY
+    ========================================= */
+
+    function viewOpportunity(id) {
+
+      const item =
+        opportunities.find(
+          opportunity =>
+            opportunity.id === id
+        );
+
+
+      viewed++;
+
+
+      localStorage.setItem(
+        "viewedOpportunities",
+        viewed
+      );
+
+
+      updateDashboard();
+
+
+      alert(
+
+        `${item.title}\n\n` +
+
+        `Organization: ${item.organization}\n` +
+
+        `Location: ${item.location}\n` +
+
+        `Deadline: ${item.deadline}\n\n` +
+
+        `${item.description}\n\n` +
+
+        `This is a demonstration opportunity.`
+
+      );
+
+    }
+
+
+    /* =========================================
+       ELIGIBILITY CHECKER
+    ========================================= */
+
+    function checkEligibility() {
+
+      const age =
+        Number(
+          document.getElementById("age").value
+        );
+
+
+      const education =
+        document.getElementById("education").value;
+
+
+      const type =
+        document.getElementById("opportunityType").value;
+
+
+      const result =
+        document.getElementById("result");
+
+
+      if (
+        !age ||
+        !education ||
+        !type
+      ) {
+
+        result.style.display = "block";
+
+        result.className = "warning";
+
+        result.innerHTML =
+          "⚠️ Please complete all fields.";
+
+        return;
+
+      }
+
+
+      let eligible = true;
+
+      let message = "";
+
+
+      if (
+        type === "job" &&
+        age < 18
+      ) {
+
+        eligible = false;
+
+        message =
+          "Many job opportunities require applicants to be 18 or older.";
+
+      }
+
+
+      else if (
+        type === "internship" &&
+        age < 16
+      ) {
+
+        eligible = false;
+
+        message =
+          "Many internship programs require applicants to be at least 16.";
+
+      }
+
+
+      else if (
+        type === "scholarship" &&
+        education === "secondary" &&
+        age > 30
+      ) {
+
+        eligible = false;
+
+        message =
+          "This demonstration checker expects a typical student age range.";
+
+      }
+
+
+      else {
+
+        message =
+          "Based on the information provided, you may meet the basic criteria. Always check the individual opportunity requirements before applying.";
+
+      }
+
+
+      result.style.display = "block";
+
+
+      if (eligible) {
+
+        result.className =
+          "success";
+
+        result.innerHTML =
+          "✅ " + message;
+
+      } else {
+
+        result.className =
+          "warning";
+
+        result.innerHTML =
+          "⚠️ " + message;
+
+      }
+
+    }
+
+
+    /* =========================================
+       DARK MODE
+    ========================================= */
+
+    function toggleTheme() {
+
+      document.body.classList.toggle(
+        "dark"
+      );
+
+
+      const dark =
+        document.body.classList.contains(
+          "dark"
+        );
+
+
+      localStorage.setItem(
+        "darkMode",
+        dark
+      );
+
+
+      document.getElementById(
+        "themeButton"
+      ).textContent =
+        dark ? "☀️" : "🌙";
+
+    }
+
+
+    /* =========================================
+       MOBILE MENU
+    ========================================= */
+
+    function toggleMenu() {
+
+      document
+        .getElementById("navLinks")
+        .classList.toggle("active");
+
+    }
+
+
+    /* =========================================
+       SMOOTH SCROLL
+    ========================================= */
+
+    function scrollToSection(id) {
+
+      const section =
+        document.getElementById(id);
+
+
+      if (section) {
+
+        section.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+
+
+    /* =========================================
+       DASHBOARD
+    ========================================= */
+
+    function updateDashboard() {
+
+      document.getElementById(
+        "savedCount"
+      ).textContent =
+        saved.length;
+
+
+      document.getElementById(
+        "viewCount"
+      ).textContent =
+        viewed;
+
+    }
+
+
+    /* =========================================
+       TOAST
+    ========================================= */
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+
+      toast.textContent =
+        message;
+
+
+      toast.classList.add(
+        "show"
+      );
+
+
+      setTimeout(() => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      }, 2500);
+
+    }
+
+
+    /* =========================================
+       UPDATE HERO STATISTICS
+    ========================================= */
+
+    function updateHeroStats() {
+
+      const total =
+        opportunities.length;
+
+
+      const scholarships =
+        opportunities.filter(
+          item =>
+            item.category === "Scholarship"
+        ).length;
+
+
+      const internships =
+        opportunities.filter(
+          item =>
+            item.category === "Internship"
+        ).length;
+
+
+      const courses =
+        opportunities.filter(
+          item =>
+            item.category === "Course"
+        ).length;
+
+
+      const jobs =
+        opportunities.filter(
+          item =>
+            item.category === "Job"
+        ).length;
+
+
+      document.getElementById(
+        "heroTotal"
+      ).textContent =
+        total;
+
+
+      document.getElementById(
+        "heroScholarships"
+      ).textContent =
+        scholarships;
+
+
+      document.getElementById(
+        "heroInternships"
+      ).textContent =
+        internships;
+
+
+      document.getElementById(
+        "heroCourses"
+      ).textContent =
+        courses;
+
+
+      document.getElementById(
+        "heroJobs"
+      ).textContent =
+        jobs;
+
+    }
+
+
+    /* =========================================
+       CLOSE MOBILE MENU WHEN LINK CLICKED
+    ========================================= */
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            document
+              .getElementById("navLinks")
+              .classList.remove("active");
+
+          }
+        );
+
+      });
+
+
+    /* =========================================
+       INITIALIZATION
+    ========================================= */
+
+    if (
+      localStorage.getItem("darkMode") === "true"
+    ) {
+
+      document.body.classList.add(
+        "dark"
+      );
+
+
+      document.getElementById(
+        "themeButton"
+      ).textContent =
+        "☀️";
+
+    }
+
+
+    displayOpportunities(
+      opportunities
+    );
+
+
+    updateDashboard();
+
+
+    updateHeroStats();
+
+  </script>
+
+</body>
+</html>
